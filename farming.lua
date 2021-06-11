@@ -11,7 +11,7 @@ end
 
 function DigIfMature()
     _,Data = turtle.inspect()
-    if data.state.age == 7 then
+    if Data.state.age == 7 then
         turtle.dig()
         turtle.place()
         turtle.drop(turtle.getItemCount()-1)
