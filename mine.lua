@@ -23,16 +23,18 @@ function ThrowJunk()
             end
         end
     end
+    turtle.select(1)
 end
 
---function IsLowOnFuel()
---    if turtle.getFuelLevel() < 64 then
---        for i = 1, 16, 1 do
---            turtle.select(i)
---            turtle.refuel(64)
---        end
---    end
---end
+function IsLowOnFuel()
+    if turtle.getFuelLevel() < 64 then
+      for i = 1, 16, 1 do
+            turtle.select(i)
+            turtle.refuel(64)
+        end
+    end
+    turtle.select(1)
+end
 
 function Onward(block)
     for i = 0, block, 1 do
