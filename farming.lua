@@ -1,11 +1,9 @@
-Go = true
-
 function AwaitMature()
     _,Data = turtle.inspect()
     if Data.state.age < 7 then
-        Go = false
+        return false
     else
-        Go = true
+        return true
     end
 end
 
@@ -29,12 +27,10 @@ function TurnIfBlock()
 end
 
 function Routine()
-    if Go then
+    if AwaitMature() then
         DigIfMature()
         turtle.turnRight()
         TurnIfBlock()
-    else
-        AwaitMature()
     end
 end
 
