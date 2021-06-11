@@ -1,8 +1,8 @@
 Go = true
 
 function AwaitMature()
-    _,data = turtle.inspect()
-    if data.state.age < 7 then
+    _,Data = turtle.inspect()
+    if Data.state.age < 7 then
         Go = false
     else
         Go = true
@@ -10,7 +10,7 @@ function AwaitMature()
 end
 
 function DigIfMature()
-    block,data = turtle.inspect()
+    _,Data = turtle.inspect()
     if data.state.age == 7 then
         turtle.dig()
         turtle.place()
@@ -19,8 +19,8 @@ function DigIfMature()
 end
 
 function TurnIfBlock()
-    block,data = turtle.inspect()
-    if block then
+    Block,_ = turtle.inspect()
+    if Block then
         turtle.turnRight()
     else
         turtle.forward()
