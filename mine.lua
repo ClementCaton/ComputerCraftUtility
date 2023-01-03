@@ -10,6 +10,7 @@ function Main()
         turtle.turnRight()
         Onward(0)
         turtle.turnRight()
+        print(turtle.getFuelLevel())
     end
 end
 
