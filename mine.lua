@@ -18,7 +18,7 @@ function ThrowJunk()
         turtle.select(i)
         if turtle.getItemCount() > 0 then
             X = turtle.getItemDetail().name
-            if X == "minecraft:cobblestone" or X == "minecraft:stone" or X == "minecraft:gravel" or X == "minecraft:dirt" or X == "minecraft:flint" then
+            if X == "minecraft:cobblestone" or X == "minecraft:stone" or X == "minecraft:gravel" or X == "minecraft:dirt" or X == "minecraft:flint" or X == "minecraft:cobbled_deepslate" or X == "minecraft:slate" then
                 turtle.drop()
             end
         end
@@ -41,7 +41,9 @@ function Onward(block)
         turtle.dig()
         turtle.digUp()
         turtle.digDown()
-        turtle.forward()
+        while turtle.forward() == false do
+            turtle.dig()
+        end
     end
 end
 
