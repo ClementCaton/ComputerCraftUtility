@@ -17,8 +17,18 @@ To use the ConputerCraftUtility programs you will have to have a minecraft insta
 You can directly download the program into the computer or turtle by using this command :
 
 ```bash
-wget https://raw.githubusercontent.com/ClementCaton/ComputerCraftUtility/main/${Path to the program}
+wget https://raw.githubusercontent.com/ClementCaton/ComputerCraftUtility/main/${Path_to_the_program}
 ```
+
+For example :
+
+```bash
+wget https://raw.githubusercontent.com/ClementCaton/ComputerCraftUtility/main/mine.lua
+# or
+wget https://raw.githubusercontent.com/ClementCaton/ComputerCraftUtility/main/turtlescreen/turtle.lua
+```
+
+It will download the file with the same name as the one in the repository.
 
 ### Monitor setup
 
