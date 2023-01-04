@@ -4,7 +4,7 @@
 
 1. [About](#about)
 2. [Installation](#installation)
-2.1 [Monitor setup](#monitor-setup)
+    - [Monitor setup](#monitor-setup)
 
 ## About
 
