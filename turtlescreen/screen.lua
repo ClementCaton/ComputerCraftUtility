@@ -1,3 +1,5 @@
+-- This code goes in a computer that is connected to a monitor on it's rigth and a wireless modem on it's left.
+
 monitor = peripheral.wrap("right")
 monitor.setTextScale(0.5)
 monitor.clear()
