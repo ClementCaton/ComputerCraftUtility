@@ -1,14 +1,14 @@
 function Main()
     while true do
         IsLowOnFuel()
-        Onward(10)
+        Onward(50)
         turtle.turnLeft()
-        Onward(0)
+        Onward(1)
         turtle.turnLeft()
-        Onward(10)
+        Onward(50)
         ThrowJunk()
         turtle.turnRight()
-        Onward(0)
+        Onward(1)
         turtle.turnRight()
         print(turtle.getFuelLevel())
     end
@@ -38,7 +38,7 @@ function IsLowOnFuel()
 end
 
 function Onward(block)
-    for i = 0, block, 1 do
+    for i = 1, block, 1 do
         turtle.dig()
         turtle.digUp()
         turtle.digDown()
