@@ -13,11 +13,13 @@ function Main()
             turtle.turnLeft()
             Onward(1)
             turtle.turnLeft()
+            ThrowJunk()
                 -- Row 2
             Onward(15)
             turtle.turnRight()
             Onward(1)
             turtle.turnRight()
+            ThrowJunk()
                 -- Checking fuel level
             print(turtle.getFuelLevel())
             IsLowOnFuel()
