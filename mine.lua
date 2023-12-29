@@ -1,8 +1,5 @@
---[[
-In order to mine a chunk we need to mine 16*16 then go down 3 blocks again again
-until we reach bedrock. Then we stop
---]]
 function Main()
+    print("Starting the mining process")
     while true do
         success, data = turtle.inspectDown()
         if success then
