@@ -1,16 +1,43 @@
+--[[
+In order to mine a chunk we need to mine 16*16 then go down 3 blocks again again
+until we reach bedrock. Then we stop
+--]]
 function Main()
     while true do
-        IsLowOnFuel()
-        Onward(50)
-        turtle.turnLeft()
-        Onward(1)
-        turtle.turnLeft()
-        Onward(50)
-        ThrowJunk()
-        turtle.turnRight()
-        Onward(1)
-        turtle.turnRight()
-        print(turtle.getFuelLevel())
+        success, data = turtle.inspectDown()
+        if success then
+            if data.name == "minecraft:bedrock" then
+                break
+            end
+        else
+            for i = 1, 16, 2 do
+                    -- Row 1
+                Onward(16)
+                turtle.turnLeft()
+                Onward(1)
+                turtle.turnLeft()
+                    -- Row 2
+                Onward(16)
+                turtle.turnRight()
+                Onward(1)
+                turtle.turnRight()
+                    -- Checking fuel level
+                print(turtle.getFuelLevel())
+                IsLowOnFuel()
+            end
+            -- Go back to the original position
+            turtle.turnRight()
+            Onward(16)
+            turtle.turnLeft()
+            floorBelow()
+        end
+    end
+end
+
+function floorBelow()
+    for i = 1, 3, 1 do
+        turtle.digDown()
+        turtle.down()
     end
 end
 
