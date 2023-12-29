@@ -6,28 +6,27 @@ function Main()
             if data.name == "minecraft:bedrock" then
                 break
             end
-        else
-            for i = 1, 16, 2 do
-                    -- Row 1
-                Onward(16)
-                turtle.turnLeft()
-                Onward(1)
-                turtle.turnLeft()
-                    -- Row 2
-                Onward(16)
-                turtle.turnRight()
-                Onward(1)
-                turtle.turnRight()
-                    -- Checking fuel level
-                print(turtle.getFuelLevel())
-                IsLowOnFuel()
-            end
-            -- Go back to the original position
-            turtle.turnRight()
+        end
+        for i = 1, 16, 2 do
+                -- Row 1
             Onward(16)
             turtle.turnLeft()
-            floorBelow()
+            Onward(1)
+            turtle.turnLeft()
+                -- Row 2
+            Onward(16)
+            turtle.turnRight()
+            Onward(1)
+            turtle.turnRight()
+                -- Checking fuel level
+            print(turtle.getFuelLevel())
+            IsLowOnFuel()
         end
+        -- Go back to the original position
+        turtle.turnRight()
+        Onward(16)
+        turtle.turnLeft()
+        floorBelow()
     end
 end
 
@@ -71,5 +70,7 @@ function Onward(block)
         end
     end
 end
+
+print("Starting the mining process")
 
 Main()
