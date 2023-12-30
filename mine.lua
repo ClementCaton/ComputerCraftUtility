@@ -1,5 +1,4 @@
 function main()
-    isLowOnFuel()
     turtle.select(1)
     success, itemName = turtle.getItemDetail().name
     if success == false or itemName ~= "enderchests:ender_chest" then
@@ -38,7 +37,6 @@ function main()
             throwJunk()
                 -- Checking fuel level
             print(turtle.getFuelLevel())
-            isLowOnFuel()
         end
         -- Go back to the original position
         turtle.turnRight()
@@ -56,7 +54,10 @@ function floorBelow()
 end
 
 function throwJunk()
+    -- List of useless blocks
     uselessList = {"minecraft:cobblestone", "minecraft:stone", "minecraft:gravel", "minecraft:dirt", "minecraft:flint", "minecraft:cobbled_deepslate", "minecraft:slate"}
+    -- List of usable fuel
+    fuelList = {"minecraft:coal", "minecraft:charcoal"}
     -- Ensure that the block below is dug out
     turtle.digDown()
     -- Select the first slot where the ender chest is
@@ -77,6 +78,15 @@ function throwJunk()
                     turtle.drop()
                 end
             end
+            -- If the turtle is "low" on fuel and has fuel, then use it
+            if turtle.getFuelLevel() < 3200 then
+                for j = 1, #fuelList, 1 do
+                    -- If it is, then throw it on the ground
+                    if X == fuelList[j] then
+                        turtle.refuel()
+                    end
+                end
+            end
             -- If it is not, then throw it in the ender chest
             turtle.dropDown()
         end
@@ -85,16 +95,6 @@ function throwJunk()
     turtle.select(1)
     turtle.dropDown()
     turtle.digDown()
-end
-
-function isLowOnFuel()
-    if turtle.getFuelLevel() < 64 then
-        for i = 1, 16, 1 do
-            turtle.select(i)
-            turtle.refuel(64)
-        end
-    end
-    turtle.select(1)
 end
 
 function onward(block)
