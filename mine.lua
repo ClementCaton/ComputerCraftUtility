@@ -69,10 +69,11 @@ function throwJunk()
         turtle.select(i)
         -- Check if the slot is empty
         if turtle.getItemCount() > 0 then
+            X = turtle.getItemDetail().name
             -- If not, then check if the item is in the useless list
             for j = 1, #uselessList, 1 do
                 -- If it is, then throw it on the ground
-                if turtle.getItemDetail().name == uselessList[j] then
+                if X == uselessList[j] then
                     turtle.drop()
                 end
             end
