@@ -1,7 +1,8 @@
 function main()
+    isLowOnFuel()
     turtle.select(1)
-    itemName = turtle.getItemDetail().name
-    if itemName ~= "enderchests:ender_chest" then
+    success, itemName = turtle.getItemDetail().name
+    if success == false or itemName ~= "enderchests:ender_chest" then
         print("Please place the ender chest in the 1st slot of the turtle inventory")
         print("Otherwise, the program will not start")
         while true do
