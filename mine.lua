@@ -1,4 +1,19 @@
-function Main()
+function main()
+    turtle.select(1)
+    itemName = turtle.getItemDetail().name
+    if itemName ~= "enderchests:ender_chest" then
+        print("Please place the ender chest in the 1st slot of the turtle inventory")
+        print("Otherwise, the program will not start")
+        while true do
+            turtle.select(1)
+            itemName = turtle.getItemDetail().name
+            if itemName == "enderchests:ender_chest" then
+                break
+            end
+        end
+    end
+
+
     print("Starting the mining process")
     while true do
         success, data = turtle.inspectDown()
@@ -9,24 +24,24 @@ function Main()
         end
         for i = 1, 16, 2 do
                 -- Row 1
-            Onward(15)
+            onward(15)
             turtle.turnLeft()
-            Onward(1)
+            onward(1)
             turtle.turnLeft()
-            ThrowJunk()
+            throwJunk()
                 -- Row 2
-            Onward(15)
+            onward(15)
             turtle.turnRight()
-            Onward(1)
+            onward(1)
             turtle.turnRight()
-            ThrowJunk()
+            throwJunk()
                 -- Checking fuel level
             print(turtle.getFuelLevel())
-            IsLowOnFuel()
+            isLowOnFuel()
         end
         -- Go back to the original position
         turtle.turnRight()
-        Onward(16)
+        onward(16)
         turtle.turnLeft()
         floorBelow()
     end
@@ -39,20 +54,38 @@ function floorBelow()
     end
 end
 
-function ThrowJunk()
+function throwJunk()
+    uselessList = {"minecraft:cobblestone", "minecraft:stone", "minecraft:gravel", "minecraft:dirt", "minecraft:flint", "minecraft:cobbled_deepslate", "minecraft:slate"}
+    -- Ensure that the block below is dug out
+    turtle.digDown()
+    -- Select the first slot where the ender chest is
+    turtle.select(1)
+    -- Place the ender chest
+    turtle.placeDown()
+    -- Throw all the junk on the ground and the rest in the ender chest
     for i = 1, 16, 1 do
+        -- Iterate through all the slots
         turtle.select(i)
+        -- Check if the slot is empty
         if turtle.getItemCount() > 0 then
-            X = turtle.getItemDetail().name
-            if X == "minecraft:cobblestone" or X == "minecraft:stone" or X == "minecraft:gravel" or X == "minecraft:dirt" or X == "minecraft:flint" or X == "minecraft:cobbled_deepslate" or X == "minecraft:slate" then
-                turtle.drop()
+            -- If not, then check if the item is in the useless list
+            for j = 1, #uselessList, 1 do
+                -- If it is, then throw it on the ground
+                if turtle.getItemDetail().name == uselessList[j] then
+                    turtle.drop()
+                end
             end
+            -- If it is not, then throw it in the ender chest
+            turtle.dropDown()
         end
     end
+    -- Pick up the ender chest on the first slot
     turtle.select(1)
+    turtle.dropDown()
+    turtle.digDown()
 end
 
-function IsLowOnFuel()
+function isLowOnFuel()
     if turtle.getFuelLevel() < 64 then
         for i = 1, 16, 1 do
             turtle.select(i)
@@ -62,7 +95,7 @@ function IsLowOnFuel()
     turtle.select(1)
 end
 
-function Onward(block)
+function onward(block)
     for i = 1, block, 1 do
         turtle.dig()
         turtle.digUp()
@@ -73,6 +106,4 @@ function Onward(block)
     end
 end
 
-print("Starting the mining process")
-
-Main()
+main()
