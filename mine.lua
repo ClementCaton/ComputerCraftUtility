@@ -12,9 +12,6 @@ function main()
             end
         end
     end
-
-
-    print("Starting the mining process")
     while true do
         success, data = turtle.inspectDown()
         if success then
@@ -55,7 +52,7 @@ end
 
 function throwJunk()
     -- List of useless blocks
-    uselessList = {"minecraft:cobblestone", "minecraft:stone", "minecraft:gravel", "minecraft:dirt", "minecraft:flint", "minecraft:cobbled_deepslate", "minecraft:slate"}
+    uselessList = {"minecraft:cobblestone", "minecraft:stone", "minecraft:gravel", "minecraft:dirt", "minecraft:flint", "minecraft:cobbled_deepslate", "minecraft:slate", "minecraft:netherrack"}
     -- List of usable fuel
     fuelList = {"minecraft:coal", "minecraft:charcoal"}
     -- Ensure that the block below is dug out
@@ -99,8 +96,8 @@ end
 
 function onward(block)
     for i = 1, block, 1 do
-        turtle.dig()
         turtle.digUp()
+        turtle.dig()
         turtle.digDown()
         while turtle.forward() == false do
             turtle.dig()
